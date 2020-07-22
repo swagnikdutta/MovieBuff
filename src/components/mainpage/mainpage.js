@@ -1,5 +1,4 @@
 import React from 'react'
-import banner from '../../images/img.jpg'
 
 import {
     MainPageContainer,
@@ -21,7 +20,7 @@ import {
     Img,
     ItemTitle,
     ItemYear,
-    ItemRating
+    ItemRating,
 } from './style'
 
 class MainPage extends React.Component{
@@ -57,7 +56,8 @@ class MainPage extends React.Component{
         </MainPageSearchContainer>
         <MainPageContentContainer>
             <MainPageBanner>
-               <ImageContainer><Image src={banner} /></ImageContainer>
+               {/* <ImageContainer><Image src={banner} /></ImageContainer> */}
+               
             </MainPageBanner>
             <TopRatedContainer>
                    <TopRatedTitle> Top Rated Movies</TopRatedTitle>

@@ -34,6 +34,10 @@ export const InputBox = styled.input`
   border-radius: 10px;
   font-size: 16px;
   text-transform: capitalize;
+
+  &:hover{
+    border: inherit;
+  }
 `
 export const FontAwesome = styled.i`
   font-size: 22px;
@@ -47,7 +51,7 @@ export const MainPageContentContainer = styled.div`
 `
 
 export const MainPageBanner = styled.div`
-   padding:20px 0px;
+   border:1px solid;
 `
 
 export const ImageContainer = styled.div`
