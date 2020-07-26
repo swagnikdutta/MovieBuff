@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useRef, useEffect } from 'react'
 
 import {
     SliderContainer,
@@ -12,16 +12,16 @@ import {
 import carousel1 from '../../images/carousel1.jpg'
 import carousel6 from '../../images/carousel6.jpg'
 import carousel3 from '../../images/carousel3.jpg'
-import carousel4 from '../../images/carousel4.jpg'
-import carousel7 from '../../images/carousel7.jpg'
+import carousel4 from '../../images/carousel10.jpg'
+import carousel5 from '../../images/carousel5.jpg'
 
 const images = [
-    carousel1, carousel6, carousel3, carousel4, carousel7
+    carousel1, carousel6, carousel3, carousel4, carousel5
 ]
 
-const Slider = () => {
-   const getWidth = () => window.innerWidth
+const getWidth = () => window.innerWidth
 
+const Slider = props => {
    const [ state, setState] = useState({
        activeIndex: 0,
        translate: 0,
@@ -29,6 +29,21 @@ const Slider = () => {
    })
     
    const { translate, transition, activeIndex } = state
+   const autoPlayRef = useRef()
+
+   useEffect(() => {
+      autoPlayRef.current = nextSlide
+   })
+
+   useEffect(() => {
+      const play = () => {
+          return  autoPlayRef.current()
+      }
+      if(props.autoPlay !== null){
+      const interval = setInterval( play, props.autoPlay*1000)
+      }
+    //   clearInterval(interval)
+   }, [props.autoPlay])
 
    const nextSlide = () => {
     if(activeIndex === images.length - 1){
@@ -76,8 +91,12 @@ const Slider = () => {
                 ))
             }
             </SliderContent>
-            <Arrow direction='right' onClick={nextSlide}><i className="fas fa-caret-right"></i></Arrow>
-            <Arrow direction='left' onClick={prevSlide}><i className="fas fa-caret-left"></i></Arrow>
+            { !props.autoPlay &&
+                <>
+                <Arrow direction='right' onClick={nextSlide}><i className="fas fa-caret-right"></i></Arrow>
+                <Arrow direction='left' onClick={prevSlide}><i className="fas fa-caret-left"></i></Arrow>
+                </> 
+            }
             <DotContainer>
             {
                 images.map((item,i) => (
@@ -87,6 +106,10 @@ const Slider = () => {
             </DotContainer>
         </SliderContainer>
     )
+}
+
+Slider.defaultProps = {
+    autoPlay : null
 }
 
 export default Slider

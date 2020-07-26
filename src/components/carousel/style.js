@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SliderContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
@@ -29,15 +29,18 @@ export const Slide = styled.div`
 export const Arrow = styled.div`
     display: flex;
     position: absolute;
-    top: 50%;
+    bottom: 5%;
     ${props => props.direction ===  'right' ? `right: 25px` : `left: 25px`};
-    height: 50px;
-    width: 50px;  
+    height: 25px;
+    width: 25px;  
     justify-content: center;
     background: #fff;
     border-raius: 50%;
     cursor: pointer;
     align-items: center;
+    border-radius: 50%;
+    color: #a72693;
+}
    
 `
 
@@ -51,9 +54,10 @@ export const DotContainer = styled.div`
 `
 
 export const Dot = styled.div`
-    padding: 10px;
+    width: 10px;
+    height: 10px;
     margin-right: 5px;
     cursor: pointer;
     border-radius: 50%;
-    background: ${props => props.active ? '#008080':'#fff'};
+    background: ${props => props.active ? 'darkgray':'#fff'};
 `

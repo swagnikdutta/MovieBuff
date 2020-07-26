@@ -5,53 +5,13 @@ export const MainPageContainer = styled.div`
   min-height: 100vh;
 `
 
-export const MainPageSearchContainer = styled.div`
-  height: 50px;
-  padding: 10px;
-  border-bottom:2px solid #c0c0c0;
-  display: flex;
-`
-export const MainPageTitle = styled.div`
-  font-size: 28px;
-  padding-left: 20px;
-  color: #7CFC00;
-  font-weight: 600;
-  margin-top:5px;
-`
-export const SearchBarContainer = styled.div`
-  position: relative;
-`
 
-export const InputBox = styled.input`
-  margin-left: 91px;
-  padding: 5px 10px;
-  margin-top: 5px;
-  width: 650px;
-  height: 40px;
-  box-sizing: border-box;
-  background-color: #fff;
-  border:1px solid #c0c0c0;;
-  border-radius: 10px;
-  font-size: 16px;
-  text-transform: capitalize;
-
-  &:hover{
-    border: inherit;
-  }
-`
-export const FontAwesome = styled.i`
-  font-size: 22px;
-  position: absolute;
-  top: 14px;
-  right: 10px;
-  color: #24a19c;
-`
 export const MainPageContentContainer = styled.div`
    padding: 0px 100px;
 `
 
 export const MainPageBanner = styled.div`
-   border:1px solid;
+   height: 500px;
 `
 
 export const ImageContainer = styled.div`
@@ -64,13 +24,14 @@ export const Image = styled.img`
   object-fit: cover;
 `
 
-export const TopRatedContainer = styled.div``
+export const TopRatedContainer = styled.div`
+`
 
 export const TopRatedTitle = styled.div`
-  font-size: 28px;
-  color:  #7CFC00;
+  font-size: 32px;
+  color:  #a72693;
   font-weight: 400;
-  margin:20px 0px;
+  margin:25px 0px;
 `
 export const Item = styled.div`
   width: 385px;
@@ -80,11 +41,11 @@ export const Item = styled.div`
   // border:1px solid #c0c0c0;
   // box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
   margin-right: 40px;
-  margin-bottom: 40px;
-  transition: background 2s;
+  margin-bottom: 70px;
 
   &:hover{
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.25);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 `
 
@@ -99,7 +60,13 @@ export const ItemImage = styled.div`
 `
 
 export const ItemTitle = styled.div`
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0 auto;
   text-align: center;
+}
 `
 
 export const Img = styled(Image)`
@@ -107,19 +74,23 @@ export const Img = styled(Image)`
 `
 export const ItemTitleContainer = styled.div`
   background: #f5f5f5;
-  padding:10px;
+  padding:15px;
   color: rgba(0,0,0,0.7);
-  height: 45px;
-  border-bottom: 2px solid rgba(0,0,0,0.3);
+  min-height: 55px;
   font-weight: 600;
   position: relative;
 `
 export const ItemYear = styled.div`
+  position: absolute;
+  bottom: 15px;
+  left: 19px;
+  font-size: 17px;
+  color: #01a9b4;
 `
 
 export const ItemRating = styled.div`
    position: absolute;
-   bottom: 5px;
+   bottom: 15px;
    right: 19px;
    font-size: 17px;
    color: #01a9b4;

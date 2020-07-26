@@ -1,15 +1,19 @@
 import React from 'react';
 import './App.css';
-import Carousel from './components/carousel/slider'
+
+import { BrowserRouter, Route } from 'react-router-dom'
 
 
 import MainPage from './components/mainpage/mainpage'
+import SearchPage from './components/searchPage/searchPage'
 
 function App() {
   return (
     <div className="App">
-     {/* <MainPage /> */}
-     <Carousel />
+      <BrowserRouter>
+        <Route path='/' exact component={MainPage} />
+        <Route path='/search/:searchTerm' exact component={SearchPage} />
+      </BrowserRouter>
     </div>
   );
 }

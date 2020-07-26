@@ -1,16 +1,12 @@
 import React from 'react'
 
+import Carousel from '../carousel/slider'
+import Navbar from '../navbar/navbar'
+
 import {
     MainPageContainer,
-    MainPageSearchContainer,
-    MainPageTitle,
-    SearchBarContainer,
-    InputBox,
-    FontAwesome,
     MainPageContentContainer,
     MainPageBanner,
-    ImageContainer,
-    Image,
     TopRatedContainer,
     TopRatedTitle,
     ItemContainer,
@@ -27,7 +23,9 @@ class MainPage extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      topRatedResult : ''
+      topRatedResult : '',
+      searchIconClicked: false,
+      searchResult: ''
     }
   }
 
@@ -36,28 +34,21 @@ class MainPage extends React.Component{
      .then(data => data.json())
      .then(data => this.setState({
       topRatedResult : data.results
-     },()=> this.setState({
-       topRatedResult : data.results
-     })))
+     }))
   }
+
+
   render(){
     const { topRatedResult } = this.state 
     const  fewtopRatedResult = topRatedResult.slice(0,12)
-    console.log('few', fewtopRatedResult)
-    console.log('type', Array.isArray(fewtopRatedResult))
+   
+    console.log('type', this.state.searchResult)
     return(
       <MainPageContainer>
-        <MainPageSearchContainer>
-            <MainPageTitle>Movie Buff</MainPageTitle>
-            <SearchBarContainer>
-                <InputBox type='text' name='search' placeholder='Search....'/>
-                <FontAwesome className="fab fa-searchengin"></FontAwesome>
-            </SearchBarContainer>
-        </MainPageSearchContainer>
+          <Navbar  />
         <MainPageContentContainer>
             <MainPageBanner>
-               {/* <ImageContainer><Image src={banner} /></ImageContainer> */}
-               
+               <Carousel autoPlay={null}/>
             </MainPageBanner>
             <TopRatedContainer>
                    <TopRatedTitle> Top Rated Movies</TopRatedTitle>
