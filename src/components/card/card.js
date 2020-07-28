@@ -1,7 +1,5 @@
 import React from 'react'
 
-import star from '../../images/star1.png'
-
 import {
     CardContainer,
     CardContent,
