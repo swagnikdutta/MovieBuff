@@ -85,7 +85,7 @@ export const ItemYear = styled.div`
   bottom: 15px;
   left: 19px;
   font-size: 17px;
-  color: #01a9b4;
+  color: rgba(3,201,169,1);
 `
 
 export const ItemRating = styled.div`
@@ -93,5 +93,8 @@ export const ItemRating = styled.div`
    bottom: 15px;
    right: 19px;
    font-size: 17px;
-   color: #01a9b4;
+   color: rgba(3,201,169,1);
+`
+export const CardRating = styled.i`
+     color: ${props => props.active ? `rgba(3,201,169,1)`:`rgba(0,0,0,0.1)`}
 `

@@ -3,6 +3,7 @@ import React from 'react'
 import Carousel from '../carousel/slider'
 import Navbar from '../navbar/navbar'
 
+
 import {
     MainPageContainer,
     MainPageContentContainer,
@@ -17,7 +18,26 @@ import {
     ItemTitle,
     ItemYear,
     ItemRating,
+    CardRating
 } from './style'
+
+
+const getRating = (vote) => {
+  var rate = []
+  const rating = Math.floor(vote/2)
+  for(let i=0; i < rating; i++){
+      rate.push(<CardRating className="fa fa-star" active></CardRating>)
+  }
+
+  if( (5-rating) > 0){
+      for(let i=0; i < (5-rating); i++){
+          rate.push(<CardRating className="fa fa-star" ></CardRating>)
+      }
+  }
+
+  return rate
+}
+
 
 class MainPage extends React.Component{
   constructor(props){
@@ -60,7 +80,7 @@ class MainPage extends React.Component{
                        <ItemTitleContainer>
                           <ItemTitle>{item.original_title}</ItemTitle>
                           <ItemYear>{item.release_date.split('-')[0]}</ItemYear>
-                          <ItemRating>{item.vote_average}</ItemRating>
+                          <ItemRating>{getRating(item.vote_average)}</ItemRating>
                         </ItemTitleContainer>
                      </Item>)
                    }

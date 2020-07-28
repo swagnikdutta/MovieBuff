@@ -34,7 +34,7 @@ class SearchPage extends React.Component{
     }
     
     
-    componentDidUpdate(prevState){
+    componentDidUpdate(){
         if( window.location.pathname !== this.state.location){
             console.log('path has changed')
             this.setState({

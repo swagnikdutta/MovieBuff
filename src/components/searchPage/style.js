@@ -9,6 +9,7 @@ export const SearchPageTitle = styled.div`
     color: rgba(3, 201, 169, 1);
     font-size: 28px;
     font-weight: 600; 
+    margin-left: 10px;
 `
 export const Search = styled.div`
 `

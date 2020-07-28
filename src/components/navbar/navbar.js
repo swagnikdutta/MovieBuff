@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withRouter } from "react-router-dom";
+import { withRouter, BrowserRouter , Link } from "react-router-dom";
 
 import {
     MainPageSearchContainer,
@@ -36,13 +36,15 @@ class Navbar extends React.Component{
 
     render(){
         return(
-        <MainPageSearchContainer>
-            <MainPageTitle>Movie Buff</MainPageTitle>
-            <SearchBarContainer>
-                <InputBox type='text' name='searchText' placeholder='Search....' onChange={(e)=>this.handleChange(e)} required/>
-                <FontAwesome className="fab fa-searchengin" onClick={this.handleClickSearchIcon}></FontAwesome>
-            </SearchBarContainer>
-        </MainPageSearchContainer>
+            <BrowserRouter>    
+                <MainPageSearchContainer>
+                    <MainPageTitle><a href='/'>Movie Buff </a></MainPageTitle>
+                    <SearchBarContainer>
+                        <InputBox type='text' name='searchText' placeholder='Search....' onChange={(e)=>this.handleChange(e)} required/>
+                        <FontAwesome className="fab fa-searchengin" onClick={this.handleClickSearchIcon}></FontAwesome>
+                    </SearchBarContainer>
+                </MainPageSearchContainer>
+            </BrowserRouter>
         )
     }
 }

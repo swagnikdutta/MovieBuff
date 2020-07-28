@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
 
 export const CardContent = styled.div`
   width: 600px;
-  height: 300px;
+  height: 350px;
   margin-right:70px;
   margin-bottom: 70px;
   display: flex;
@@ -33,4 +33,23 @@ export const CardTitle = styled.div`
     font-weight: 400;
     font-size: 18px;
     letter-spacing: 1px;
+`
+
+export const CardStar = styled.div`
+     display: flex;
+     padding:10px 0px;
+`
+
+export const CardRating = styled.i`
+     color: ${props => props.active ? `rgba(3,201,169,1)`:`rgba(0,0,0,0.1)`}
+`
+
+export const CardGenre = styled.div``
+
+export const CardGenreItem = styled.div``
+
+export const CardOverview = styled.div`
+  color: rgba(0,0,0,0.5);
+  font-size: 14px;
+  margin-top: 10px;
 `
