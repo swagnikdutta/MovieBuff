@@ -10,8 +10,9 @@ import {
     MainPageBanner,
     TopRatedContainer,
     TopRatedTitle,
-    ItemContainer,
+    ItemsContainer,
     Item,
+    Background,
     ItemImage,
     ItemTitleContainer,
     Img,
@@ -71,12 +72,15 @@ class MainPage extends React.Component{
                <Carousel autoPlay={null}/>
             </MainPageBanner>
             <TopRatedContainer>
-                   <TopRatedTitle> Top Rated Movies</TopRatedTitle>
-                   <ItemContainer>
+                   <TopRatedTitle>Top rated</TopRatedTitle>
+                   <ItemsContainer>
                    {
                      fewtopRatedResult && fewtopRatedResult.map((item)=>  
                      <Item>
-                       <ItemImage><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/></ItemImage>
+                       <ItemImage>
+                         <Background imageUrl={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}></Background>
+                         <Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/>
+                       </ItemImage>
                        <ItemTitleContainer>
                           <ItemTitle>{item.original_title}</ItemTitle>
                           <ItemYear>{item.release_date.split('-')[0]}</ItemYear>
@@ -84,7 +88,7 @@ class MainPage extends React.Component{
                         </ItemTitleContainer>
                      </Item>)
                    }
-                   </ItemContainer>
+                   </ItemsContainer>
             </TopRatedContainer>
 
         </MainPageContentContainer>
