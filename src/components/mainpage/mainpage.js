@@ -3,6 +3,7 @@ import React from 'react'
 import Carousel from '../carousel/slider'
 import Navbar from '../navbar/navbar'
 
+import getRating from '../../utils/getRating'
 
 import {
     MainPageContainer,
@@ -17,26 +18,8 @@ import {
     Img,
     ItemTitle,
     ItemYear,
-    ItemRating,
-    CardRating
+    ItemRating
 } from './style'
-
-
-const getRating = (vote) => {
-  var rate = []
-  const rating = Math.floor(vote/2)
-  for(let i=0; i < rating; i++){
-      rate.push(<CardRating className="fa fa-star" active></CardRating>)
-  }
-
-  if( (5-rating) > 0){
-      for(let i=0; i < (5-rating); i++){
-          rate.push(<CardRating className="fa fa-star" ></CardRating>)
-      }
-  }
-
-  return rate
-}
 
 
 class MainPage extends React.Component{
@@ -57,7 +40,10 @@ class MainPage extends React.Component{
      }))
   }
 
-
+  handleClick = (id) => {
+    this.props.history.push(`/movie/${id}`)
+  }
+  
   render(){
     const { topRatedResult } = this.state 
     const  fewtopRatedResult = topRatedResult.slice(0,12)
@@ -75,7 +61,7 @@ class MainPage extends React.Component{
                    <ItemContainer>
                    {
                      fewtopRatedResult && fewtopRatedResult.map((item)=>  
-                     <Item>
+                     <Item onClick={()=>this.handleClick(item.id)}>
                        <ItemImage><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/></ItemImage>
                        <ItemTitleContainer>
                           <ItemTitle>{item.original_title}</ItemTitle>

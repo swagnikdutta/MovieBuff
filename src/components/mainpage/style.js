@@ -95,6 +95,3 @@ export const ItemRating = styled.div`
    font-size: 17px;
    color: rgba(3,201,169,1);
 `
-export const CardRating = styled.i`
-     color: ${props => props.active ? `rgba(3,201,169,1)`:`rgba(0,0,0,0.1)`}
-`

@@ -12,6 +12,7 @@ export const CardContent = styled.div`
   margin-bottom: 70px;
   display: flex;
   box-shadow: 0px 10px 20px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 `
 export const CardImage = styled.div`
   flex: 1;
@@ -38,10 +39,6 @@ export const CardTitle = styled.div`
 export const CardStar = styled.div`
      display: flex;
      padding:10px 0px;
-`
-
-export const CardRating = styled.i`
-     color: ${props => props.active ? `rgba(3,201,169,1)`:`rgba(0,0,0,0.1)`}
 `
 
 export const CardGenre = styled.div``

@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { withRouter } from 'react-router-dom'
+
+import getRating from '../../utils/getRating'
+
 import {
     CardContainer,
     CardContent,
@@ -8,27 +12,10 @@ import {
     Image,
     CardTitle,
     CardStar,
-    CardRating,
     CardGenre,
     CardGenreItem,
     CardOverview
 } from './style'
-
-const getRating = (vote) => {
-    var rate = []
-    const rating = Math.floor(vote/2)
-    for(let i=0; i < rating; i++){
-        rate.push(<CardRating className="fa fa-star" active></CardRating>)
-    }
-
-    if( (5-rating) > 0){
-        for(let i=0; i < (5-rating); i++){
-            rate.push(<CardRating className="fa fa-star" ></CardRating>)
-        }
-    }
-
-    return rate
-}
 
 class Card extends React.Component{
 
@@ -50,6 +37,10 @@ class Card extends React.Component{
         )
     }
 
+    handleClick = (id) => {
+        this.props.history.push(`/movie/${id}`)
+    }
+
     render(){
         const  searchResultCard  = this.props.searchResult.slice(0,10)
         
@@ -58,7 +49,7 @@ class Card extends React.Component{
             <CardContainer>
                 {
                     searchResultCard && searchResultCard.map((item)=>(
-                            <CardContent>
+                            <CardContent onClick={()=>this.handleClick(item.id)}>
                                 <CardImage>
                                     <Image src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} />
                                 </CardImage>
@@ -83,4 +74,4 @@ class Card extends React.Component{
     }
 }
 
-export default Card
+export default  withRouter(Card)
