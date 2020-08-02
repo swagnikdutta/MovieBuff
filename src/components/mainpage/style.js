@@ -37,15 +37,16 @@ export const Item = styled.div`
   transition: box-shadow 300ms;
   &:hover{
     cursor: pointer;
-    background: rgba(0,0,0,0.25);
     box-shadow: 3px 3px 40px #A5A5A5;  
     transition: box-shadow 600ms;
-  }
+  };
+  // border-radius: 20px;
 `
 export const ItemImage = styled.div`
   width: 385px;
   height: 280px;
   position: relative;
+  // border-radius: 20px;
 `
 export const Background = styled.div`
   position: absolute;
@@ -65,6 +66,7 @@ export const Img = styled(Image)`
   z-index: 200;
   background-color: rgba(0,0,0,0.2);
   backdrop-filter: blur(10px);
+  // border-radius: 10px;
 `
 export const ItemTitle = styled.div`
   width: 200px;
@@ -76,12 +78,13 @@ export const ItemTitle = styled.div`
 }
 `
 export const ItemTitleContainer = styled.div`
-  background: #f5f5f5;
   padding:15px;
   color: rgba(0,0,0,0.7);
   min-height: 55px;
   font-weight: 600;
   position: relative;
+  // border-radius: 5px;
+  border: 1px solid #ececec;
 `
 export const ItemYear = styled.div`
   position: absolute;
