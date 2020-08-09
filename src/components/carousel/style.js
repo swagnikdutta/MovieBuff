@@ -39,9 +39,7 @@ export const Arrow = styled.div`
     cursor: pointer;
     align-items: center;
     border-radius: 50%;
-    color: #a72693;
-}
-   
+    color: #a72693;   
 `
 
 export const DotContainer = styled.div`

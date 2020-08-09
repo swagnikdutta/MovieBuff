@@ -36,7 +36,6 @@ class SearchPage extends React.Component{
     
     componentDidUpdate(){
         if( window.location.pathname !== this.state.location){
-            console.log('path has changed')
             this.setState({
                 location: window.location.pathname
             },()=>{
@@ -48,14 +47,12 @@ class SearchPage extends React.Component{
     }
 
     componentDidMount(){
-        console.log('I m here')
         const searchText = this.state.location
         this.apiCall(searchText)
     }
 
     render(){
         const { searchResult,  location} = this.state
-        
         return(
             <SearchContainer>
                 <Navbar />

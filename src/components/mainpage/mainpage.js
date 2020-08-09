@@ -3,7 +3,7 @@ import React from 'react'
 import Carousel from '../carousel/slider'
 import Navbar from '../navbar/navbar'
 
-import getRating from '../../utils/getRating'
+import { getRating } from '../../utils/getRating'
 
 import {
     MainPageContainer,
@@ -18,7 +18,8 @@ import {
     Img,
     ItemTitle,
     ItemYear,
-    ItemRating
+    ItemRating,
+    Background
 } from './style'
 
 
@@ -47,8 +48,6 @@ class MainPage extends React.Component{
   render(){
     const { topRatedResult } = this.state 
     const  fewtopRatedResult = topRatedResult.slice(0,12)
-   
-    console.log('type', this.state.searchResult)
     return(
       <MainPageContainer>
           <Navbar  />
@@ -62,7 +61,10 @@ class MainPage extends React.Component{
                    {
                      fewtopRatedResult && fewtopRatedResult.map((item)=>  
                      <Item onClick={()=>this.handleClick(item.id)}>
-                       <ItemImage><Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/></ItemImage>
+                       <ItemImage>
+                          <Background imageUrl={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}></Background>
+                          <Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/>
+                        </ItemImage>
                        <ItemTitleContainer>
                           <ItemTitle>{item.original_title}</ItemTitle>
                           <ItemYear>{item.release_date.split('-')[0]}</ItemYear>

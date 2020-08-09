@@ -57,6 +57,7 @@ export const ItemContainer = styled.div`
 export const ItemImage = styled.div`
   width: 385px;
   height: 280px;
+  position: relative;
 `
 
 export const ItemTitle = styled.div`
@@ -71,6 +72,11 @@ export const ItemTitle = styled.div`
 
 export const Img = styled(Image)`
   object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  backdrop-filter: blur(10px);
 `
 export const ItemTitleContainer = styled.div`
   background: #f5f5f5;
@@ -95,3 +101,14 @@ export const ItemRating = styled.div`
    font-size: 17px;
    color: rgba(3,201,169,1);
 `
+
+export const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: url(${props => (props.imageUrl)});
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+`;

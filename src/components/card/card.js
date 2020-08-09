@@ -2,7 +2,7 @@ import React from 'react'
 
 import { withRouter } from 'react-router-dom'
 
-import getRating from '../../utils/getRating'
+import { getRating, getGenre } from '../../utils/getRating'
 
 import {
     CardContainer,
@@ -26,17 +26,6 @@ class Card extends React.Component{
         }
     }
 
-    getGenre = (id) => {
-        let genre = []   
-        const movieDetailApi = `https://api.themoviedb.org/3/movie/${id}?api_key=08f31c809a8ba972b87a3748c6885970&language=en-US`
-        fetch(movieDetailApi)
-        .then(data => data.json())
-        .then(data =>  this.setState({
-            genreArray : data.genres
-        })
-        )
-    }
-
     handleClick = (id) => {
         this.props.history.push(`/movie/${id}`)
     }
@@ -44,7 +33,6 @@ class Card extends React.Component{
     render(){
         const  searchResultCard  = this.props.searchResult.slice(0,10)
         
-        console.log('props received', searchResultCard)
         return(
             <CardContainer>
                 {
@@ -60,7 +48,7 @@ class Card extends React.Component{
                                     </CardStar>
                                     {item.id && 
                                     <CardGenre>
-                                        {/* {this.getGenre(item.id)} */}
+                                        {/* {getGenre(item.id)}    */}
                                     </CardGenre>
                                     }
                                     <CardOverview>{item.overview}</CardOverview>

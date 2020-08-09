@@ -1,8 +1,9 @@
 import React from 'react'
 
 import Navbar from '../navbar/navbar'
+import ContentSlider from '../contentslider/contentslider'
 
-import getRating from '../../utils/getRating'
+import { getRating } from '../../utils/getRating'
 
 import {
     MovieDetailContainer,
@@ -18,11 +19,7 @@ import {
     VoteAverage,
     OverView,
     CastTitle,
-    CastImage,
-    CastImageContainer,
     Image,
-    Name,
-    Character
 } from './style'
 
 class MovieDetail extends React.Component{
@@ -58,10 +55,8 @@ class MovieDetail extends React.Component{
     render(){
 
         const { movieData, movieCast } = this.state
-       
-        console.log(movieCast.cast)
 
-        const movieCastArray = movieCast.cast && movieCast.cast.slice(0,3)
+        const movieCastArray = movieCast.cast && movieCast.cast.slice(0,10)
 
         return(
             <MovieDetailContainer>
@@ -81,19 +76,7 @@ class MovieDetail extends React.Component{
                             </RatingContainer>
                             <OverView>{movieData.overview}</OverView>
                             <CastTitle>Cast and Crew</CastTitle>
-                            <CastImage>
-                            {
-                                movieCastArray && movieCastArray.map(item=>{
-                                    return(
-                                            <div>
-                                            <CastImageContainer><Image src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`} /></CastImageContainer>
-                                            <Name>{item.name}</Name>
-                                            <Character>as {item.character}</Character>
-                                            </div>
-                                    )
-                                })
-                            }
-                            </CastImage>
+                            <ContentSlider sliderArray={movieCastArray} />
                         </DescriptionContainer>
                     </MovieDescriptionContainer>
                     } 
