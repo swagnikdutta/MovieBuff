@@ -2,6 +2,7 @@ import React from 'react'
 
 import Navbar from '../navbar/navbar'
 import ContentSlider from '../contentslider/contentslider'
+import CardMain from '../cardMain/cardMain'
 
 import { getRating } from '../../utils/getRating'
 
@@ -20,6 +21,8 @@ import {
     OverView,
     CastTitle,
     Image,
+    SimlarMovieContainer,
+    SimilarMovieTitle,
 } from './style'
 
 class MovieDetail extends React.Component{
@@ -28,36 +31,44 @@ class MovieDetail extends React.Component{
         super(props)
         this.state = {
             movieData : '',
-            movieCast : ''
+            movieCast : '',
+            simlarMovie: '',
         }
     }
 
     componentDidMount(){
-      const movieId = window.location.pathname.split('/').pop()
+        const movieId = window.location.pathname.split('/').pop()
 
-      const movieDetailApi = `https://api.themoviedb.org/3/movie/${movieId}?api_key=08f31c809a8ba972b87a3748c6885970&language=en-US`
-      const movieCastApi = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=08f31c809a8ba972b87a3748c6885970`
+        const movieDetailApi = `https://api.themoviedb.org/3/movie/${movieId}?api_key=08f31c809a8ba972b87a3748c6885970&language=en-US`
+        const movieCastApi = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=08f31c809a8ba972b87a3748c6885970`
+        const simlarMovieApi = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=08f31c809a8ba972b87a3748c6885970&language=en-US&page=1`
 
-      fetch(movieDetailApi)
-      .then(data => data.json())
-      .then(data => this.setState({
-          movieData: data
-      }))
+        fetch(movieDetailApi)
+        .then(data => data.json())
+        .then(data => this.setState({
+            movieData: data
+        }))
 
-      fetch(movieCastApi)
-      .then(data => data.json())
-      .then(data => this.setState({
-        movieCast: data
-      }))
+        fetch(movieCastApi)
+        .then(data => data.json())
+        .then(data => this.setState({
+            movieCast: data
+        }))
+
+        fetch(simlarMovieApi)
+        .then(data => data.json())
+        .then(data => this.setState({
+            simlarMovie: data.results
+        }))
 
     }
 
     render(){
 
-        const { movieData, movieCast } = this.state
+        const { movieData, movieCast, simlarMovie } = this.state
 
         const movieCastArray = movieCast.cast && movieCast.cast.slice(0,10)
-
+        console.log('similar movie', this.state.simlarMovie)
         return(
             <MovieDetailContainer>
                 <Navbar />
@@ -81,6 +92,11 @@ class MovieDetail extends React.Component{
                     </MovieDescriptionContainer>
                     } 
                 </DetailContainer>
+                <SimlarMovieContainer>
+                    <SimilarMovieTitle>You may also like</SimilarMovieTitle>
+                    <CardMain cardMaindata={simlarMovie} />
+                    
+                </SimlarMovieContainer>
             </MovieDetailContainer>
         )
     }

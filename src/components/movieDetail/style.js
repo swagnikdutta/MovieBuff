@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MovieDetailContainer = styled.div``
 
 export const DetailContainer = styled.div`
-  padding: 20px 100px ;
+  padding: 0px 100px ;
   height: 900px;
 `
 
@@ -64,3 +64,8 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
 `
+export const SimlarMovieContainer = styled.div`
+  padding: 0px 100px;
+`
+
+export const SimilarMovieTitle = styled.div``

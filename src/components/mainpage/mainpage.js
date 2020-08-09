@@ -2,8 +2,7 @@ import React from 'react'
 
 import Carousel from '../carousel/slider'
 import Navbar from '../navbar/navbar'
-
-import { getRating } from '../../utils/getRating'
+import CardMain from '../cardMain/cardMain'
 
 import {
     MainPageContainer,
@@ -11,15 +10,6 @@ import {
     MainPageBanner,
     TopRatedContainer,
     TopRatedTitle,
-    ItemContainer,
-    Item,
-    ItemImage,
-    ItemTitleContainer,
-    Img,
-    ItemTitle,
-    ItemYear,
-    ItemRating,
-    Background
 } from './style'
 
 
@@ -41,10 +31,6 @@ class MainPage extends React.Component{
      }))
   }
 
-  handleClick = (id) => {
-    this.props.history.push(`/movie/${id}`)
-  }
-  
   render(){
     const { topRatedResult } = this.state 
     const  fewtopRatedResult = topRatedResult.slice(0,12)
@@ -57,24 +43,8 @@ class MainPage extends React.Component{
             </MainPageBanner>
             <TopRatedContainer>
                    <TopRatedTitle> Top Rated Movies</TopRatedTitle>
-                   <ItemContainer>
-                   {
-                     fewtopRatedResult && fewtopRatedResult.map((item)=>  
-                     <Item onClick={()=>this.handleClick(item.id)}>
-                       <ItemImage>
-                          <Background imageUrl={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}></Background>
-                          <Img src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}/>
-                        </ItemImage>
-                       <ItemTitleContainer>
-                          <ItemTitle>{item.original_title}</ItemTitle>
-                          <ItemYear>{item.release_date.split('-')[0]}</ItemYear>
-                          <ItemRating>{getRating(item.vote_average)}</ItemRating>
-                        </ItemTitleContainer>
-                     </Item>)
-                   }
-                   </ItemContainer>
+                   <CardMain cardMaindata={fewtopRatedResult} />
             </TopRatedContainer>
-
         </MainPageContentContainer>
       </MainPageContainer>
     )

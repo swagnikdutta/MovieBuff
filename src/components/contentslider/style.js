@@ -47,5 +47,5 @@ export const Arrow = styled.div`
     cursor: pointer;
     align-items: center;
     border-radius: 50%;
-    color: rgba(0,0,0,0.8);   
+    color: rgba(0,0,0,0.4);   
 `
