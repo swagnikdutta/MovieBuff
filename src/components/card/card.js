@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { withRouter } from 'react-router-dom'
+
+import { getRating, getGenre } from '../../utils/getRating'
+
 import {
     CardContainer,
     CardContent,
@@ -8,27 +12,10 @@ import {
     Image,
     CardTitle,
     CardStar,
-    CardRating,
     CardGenre,
     CardGenreItem,
     CardOverview
 } from './style'
-
-const getRating = (vote) => {
-    var rate = []
-    const rating = Math.floor(vote/2)
-    for(let i=0; i < rating; i++){
-        rate.push(<CardRating className="fa fa-star" active></CardRating>)
-    }
-
-    if( (5-rating) > 0){
-        for(let i=0; i < (5-rating); i++){
-            rate.push(<CardRating className="fa fa-star" ></CardRating>)
-        }
-    }
-
-    return rate
-}
 
 class Card extends React.Component{
 
@@ -39,26 +26,18 @@ class Card extends React.Component{
         }
     }
 
-    getGenre = (id) => {
-        let genre = []   
-        const movieDetailApi = `https://api.themoviedb.org/3/movie/${id}?api_key=08f31c809a8ba972b87a3748c6885970&language=en-US`
-        fetch(movieDetailApi)
-        .then(data => data.json())
-        .then(data =>  this.setState({
-            genreArray : data.genres
-        })
-        )
+    handleClick = (id) => {
+        this.props.history.push(`/movie/${id}`)
     }
 
     render(){
         const  searchResultCard  = this.props.searchResult.slice(0,10)
         
-        console.log('props received', searchResultCard)
         return(
             <CardContainer>
                 {
                     searchResultCard && searchResultCard.map((item)=>(
-                            <CardContent>
+                            <CardContent onClick={()=>this.handleClick(item.id)}>
                                 <CardImage>
                                     <Image src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`} />
                                 </CardImage>
@@ -69,7 +48,7 @@ class Card extends React.Component{
                                     </CardStar>
                                     {item.id && 
                                     <CardGenre>
-                                        {/* {this.getGenre(item.id)} */}
+                                        {/* {getGenre(item.id)}    */}
                                     </CardGenre>
                                     }
                                     <CardOverview>{item.overview}</CardOverview>
@@ -83,4 +62,4 @@ class Card extends React.Component{
     }
 }
 
-export default Card
+export default  withRouter(Card)

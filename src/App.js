@@ -6,6 +6,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import MainPage from './components/mainpage/mainpage'
 import SearchPage from './components/searchPage/searchPage'
+import MovieDetail from './components/movieDetail/movieDetail'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Route path='/' exact component={MainPage} />
         <Route path='/search/:searchTerm' exact component={SearchPage} />
+        <Route path='/movie/:movieName' exact component={MovieDetail} />
       </BrowserRouter>
     </div>
   );
